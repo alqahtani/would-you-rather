@@ -32,7 +32,8 @@ class Nav extends Component {
 
         {authedUser !== null && (
           <ul>
-            <p>Hey, { user.name }</p>
+            <p>Hello, { user.name }</p>
+            <img src={ user.avatarURL } className='navbar-profile-img' />
             <button onClick={this.handleLogout}>Logout</button>
           </ul>
         )}

@@ -8,6 +8,7 @@ import { handleInitialData } from '../actions/shared'
 import Nav from '../components/Nav'
 import Login from '../components/Login'
 import Dashboard from '../components/Dashboard'
+import NewQuestion from '../components/NewQuestion'
 
 
 class App extends Component {
@@ -22,11 +23,15 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className='container'>
-            <h3>Would you rather?</h3>
             <Nav />
             {authedUser === null
-              ? <Route path='/' exact component={Login} /> 
-              : <Route path='/' exact component={Dashboard} />}
+              ? <Login /> 
+              : (
+                <Fragment>
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/new' component={NewQuestion} />
+                </Fragment>
+              )}
             
           </div>
         </Fragment>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 let users = {
   sarahedo: {
     id: 'sarahedo',

@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+
 
 import { handleInitialData } from '../actions/shared'
+import Nav from '../components/Nav'
+import Login from '../components/Login'
+
 
 class App extends Component {
   componentDidMount() {
@@ -12,14 +17,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Fragment>
+          <div className='container'>
+            <h3>Would you rather?</h3>
+            <Nav />
+            <Route path='/' exact component={Login} />
+          </div>
+        </Fragment>
+      </Router>
     )
   }
 }

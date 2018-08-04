@@ -4,8 +4,7 @@ export class Question extends Component {
   render() {
     const { user, question, answer } = this.props
     let otherOption = (answer === 'optionOne') ? 'optionTwo' : 'optionOne'
-    console.log('Question ID: ', question.id)
-    console.log('Answer: ', answer)
+    
     return (
       <div>
         <hr />

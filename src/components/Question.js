@@ -12,7 +12,7 @@ export class Question extends Component {
         <span>{user.name} asks:</span>
         <div>
           <div>
-            <img src={user.avatarURL} className='navbar-profile-img' />
+            <img alt='user avatar' src={user.avatarURL} className='navbar-profile-img' />
           </div>
           {answer !== null 
             ? (

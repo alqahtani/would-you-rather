@@ -7,13 +7,13 @@ import { setAuthedUser } from '../actions/authedUser'
 
 export class Login extends Component {
   state = {
-    slectedUser: this.props.authedUser
+    slectedUser: 'none'
   }
 
   handleChange = (e) => {
     const slectedUser = e.target.value
     this.setState(() => ({
-      slectedUser
+      slectedUser,
     }))
   }
 
@@ -46,7 +46,7 @@ export class Login extends Component {
                 </option>
               ))}
             </select>
-            <button>Sign In</button>
+            <button disabled={this.state.slectedUser === 'none'}>Sign In</button>
             </form>
           )}
         

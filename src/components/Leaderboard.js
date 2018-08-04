@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import LeaderboardItem from '../components/LeaderboardItem'
+
 export class Leaderboard extends Component {
   render() {
-    console.log(this.props.scores)
+    const {
+      users,
+      scores
+    } = this.props
     return (
       <div>
-        Hey from Leaderboard!
+        <h1>Leaderboard</h1>
+        <ul>
+          {scores.map((s)=> (
+            <li key={s.id}>
+              <LeaderboardItem user={users[s.id]} score={s.score} />
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }
@@ -25,7 +37,6 @@ const mapStateToProps = ({ users }) => {
   })
 
   return {
-    usersIds,
     users,
     scores: scores.sort((a,b) => b.score - a.score)
   }

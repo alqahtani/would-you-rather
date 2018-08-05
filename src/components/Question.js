@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class Question extends Component {
   render() {
     const { user, question, answer } = this.props
-    let otherOption = (answer === 'optionOne') ? 'optionTwo' : 'optionOne'
+    const otherOption = (answer === 'optionOne') ? 'optionTwo' : 'optionOne'
     
     return (
       <div>
@@ -35,7 +36,9 @@ export class Question extends Component {
               </div>
             )}
         </div>
-        <button>View Poll</button>
+        <Link to={`/questions/${question.id}`} className='tweet'>
+        View Poll
+        </Link>
         <hr />
       </div>
     )

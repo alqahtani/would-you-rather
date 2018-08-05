@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { handleAddQuestion } from '../actions/questions'
 
@@ -19,6 +20,8 @@ export class NewQuestion extends Component {
       author: this.props.authedUser
     }
     dispatch(handleAddQuestion(question))
+
+    this.props.history.push('/')
   }
 
   handleInputChange = () => {
@@ -64,4 +67,4 @@ export class NewQuestion extends Component {
 
 const mapStateToProps = ({ authedUser }) => ({ authedUser })
 
-export default connect(mapStateToProps)(NewQuestion)
+export default withRouter(connect(mapStateToProps)(NewQuestion))

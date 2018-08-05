@@ -14,15 +14,19 @@ export class QuestionPage extends Component {
     const { isAnswered } = this.props
 
     return (
-      <div>
-        {isAnswered === true 
-          ? (
-            <AnsweredQuestion data={this.props} />
-          )
-          : (
-            <UnansweredQuestion data={this.props} handleAnswer={this.handleAnswer} />
-          )
+      <div className='box'>
+        {isAnswered !== null
+          ? <div>{isAnswered === true 
+            ? (
+              <AnsweredQuestion data={this.props} />
+            )
+            : (
+              <UnansweredQuestion data={this.props} handleAnswer={this.handleAnswer} />
+            )
+          }</div>
+          : <div>404</div>
         }
+        
       </div>
     )
   }
@@ -31,7 +35,7 @@ export class QuestionPage extends Component {
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
   const { id } = props.match.params
   const question = questions[id]
-  const isAnswered = Object.keys(users[authedUser].answers).includes(question.id)
+  const isAnswered = question ? Object.keys(users[authedUser].answers).includes(question.id) : null
 
   return {
     users,

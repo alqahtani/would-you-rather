@@ -1,4 +1,5 @@
 import React from 'react'
+import { Line } from 'rc-progress';
 
 const AnsweredQuestion = ({ data }) => {
   
@@ -14,28 +15,32 @@ const AnsweredQuestion = ({ data }) => {
   
   return (
     <div>
-      <h3>{users[question.author].name} asks:</h3>
-      <img alt='user avatar' src={users[question.author].avatarURL} />
-      <h1>You Would Rather...</h1>
-      <div>
-        <div>
-          <h4>{question[chosenAnswer].text}</h4>
-          <br />
-          <i>{percentOfChosenAnswer}%</i>
-          <br />
-          <i>{numOfChosenAnswer} of {allVotes}</i>
+      <div className='box-header question-box-header'>Asked by {users[question.author].name}:</div>
+      <div className='question-box-content'>
+        <div className='question-box-content-author'>
+          <img alt='user avatar' src={users[question.author].avatarURL} className='question-box-content-author-avatar' />
         </div>
-        <h2>Than</h2>
-        <div>
-          <h4>{question[otherOption].text}</h4>
-          <br />
-          <i>{percentOfOtherOption}%</i>
-          <br />
-          <i>{numOfOtherOption} of {allVotes}</i>
+        <div className='question-box-content-details'>
+          <h3 className='question-box-content-details-title'>Results:</h3>
+          <div className='question-box-content-details-options'>
+            <div className='question-box-content-details-option question-box result-box result-selected-option'>
+              <div className='result-selected-optio-badge'>Your Vote</div>
+              <h4><span>You would rather</span> {question[chosenAnswer].text}</h4>
+              <Line percent={parseInt(percentOfChosenAnswer, 10)} strokeWidth="4" strokeColor="#f4645f" />
+              <p className='result-stats percent'>{percentOfChosenAnswer}%</p>
+              <p className='result-stats'>{numOfChosenAnswer} out of {allVotes} votes</p>
+            </div>
+            <div className='question-box-content-details-option question-box result-box result-other-option'>
+              <h4><span>Than</span> {question[otherOption].text}</h4>
+              <Line percent={parseInt(percentOfOtherOption, 10)} strokeWidth="4" strokeColor="#dee0df" />
+              <p className='result-stats percent'>{percentOfOtherOption}%</p>
+              <p className='result-stats'>{numOfOtherOption} out of {allVotes} votes</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </div>  
   )
 }
 
-export default AnsweredQuestion
+export default AnsweredQuestion  

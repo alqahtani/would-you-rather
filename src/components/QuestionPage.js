@@ -14,7 +14,7 @@ export class QuestionPage extends Component {
     const { isAnswered } = this.props
 
     return (
-      <div className='box'>
+      <div className='box'> 
         {isAnswered !== null
           ? <div>{isAnswered === true 
             ? (

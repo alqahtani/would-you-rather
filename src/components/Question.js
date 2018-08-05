@@ -7,39 +7,42 @@ export class Question extends Component {
     const otherOption = (answer === 'optionOne') ? 'optionTwo' : 'optionOne'
     
     return (
-      <div>
-        <hr />
-        <span>{user.name} asks:</span>
-        <div>
-          <div>
-            <img alt='user avatar' src={user.avatarURL} className='navbar-profile-img' />
+      <div className='question-box'>
+        <div className='box-header question-box-header'>
+        {user.name} asks:
+        </div>
+        <div className='question-box-content'>
+          <div className='question-box-content-author'>
+            <img alt='user avatar' src={user.avatarURL} className='question-box-content-author-avatar' />
           </div>
           {answer !== null 
             ? (
-              <div>
-                <strong>You would rather:</strong>
-                <div>
-                  <p>{question[answer].text}</p>
-                  <br /><strong>THAN</strong><br />
-                  <p>{question[otherOption].text}</p>
+              <div className='question-box-content-details'>
+                <h3 className='question-box-content-details-title'>You would rather:</h3>
+                <div className='question-box-content-details-options'>
+                  <p className='question-box-content-details-option'>{question[answer].text}</p>
+                  <h4 className='question-box-content-details-option-separator'>THAN</h4>
+                  <p className='question-box-content-details-option'>{question[otherOption].text}</p>
                 </div>
+                <Link to={`/questions/${question.id}`} className='question-box-view-btn'>
+                View Poll
+                </Link>
               </div>
             )
             : (
-              <div>
-                <strong>Would you rather?</strong>
-                <div>
-                  <p>{question.optionOne.text}</p>
-                  <br /><strong>OR</strong><br />
-                  <p>{question.optionTwo.text}</p>
+              <div className='question-box-content-details'>
+                <h3 className='question-box-content-details-title'>Would you rather ...</h3>
+                <div className='question-box-content-details-options'>
+                  <p className='question-box-content-details-option'>{question.optionOne.text}</p>
+                  <h4 className='question-box-content-details-option-separator'>OR</h4>
+                  <p className='question-box-content-details-option'>{question.optionTwo.text}</p>
                 </div>
+                <Link to={`/questions/${question.id}`} className='question-box-view-btn'>
+                View Poll
+                </Link>
               </div>
             )}
         </div>
-        <Link to={`/questions/${question.id}`} className='tweet'>
-        View Poll
-        </Link>
-        <hr />
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export class Dashboard extends Component {
   render() {
@@ -11,22 +12,29 @@ export class Dashboard extends Component {
       users,
       authedUser,
     } = this.props
-    // console.log('notAnswered: ', notAnswered)
-    // console.log('Answered: ', answered)
     
     return (
-      <div>
-        <h1>Unanswered Questions</h1>
+      <Tabs className='box'>
+        <div className='box-header'>
+          <TabList className='tabs-titles'>
+            <Tab>Unanswered Questions</Tab>
+            <Tab>Answered Questions</Tab>
+          </TabList>
+        </div>
+
+        <TabPanel>
         {notAnswered.map(id => (
           <Question key={id} question={questions[id]} user={users[questions[id].author]}  answer={null} />
         ))}
-        
-        <h1>Answered Questions</h1>
+        </TabPanel>
+        <TabPanel>
         {answered.map(id => (
           <Question key={id} question={questions[id]} user={users[questions[id].author]}  answer={users[authedUser].answers[id]} />
         ))}
+        </TabPanel>
+      </Tabs>
         
-      </div>
+      // </div>
     )
   }
 }

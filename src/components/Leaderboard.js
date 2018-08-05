@@ -10,12 +10,12 @@ export class Leaderboard extends Component {
       scores
     } = this.props
     return (
-      <div>
-        <h1>Leaderboard</h1>
-        <ul>
-          {scores.map((s)=> (
+      <div className='box'>
+        <div className='box-header question-box-header'>Leaderboard</div>
+        <ul className='leaderboard-list'>
+          {scores.map((s, index)=> (
             <li key={s.id}>
-              <LeaderboardItem user={users[s.id]} score={s.score} />
+              <LeaderboardItem user={users[s.id]} score={s.score} index={index} />
             </li>
           ))}
         </ul>

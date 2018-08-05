@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { FaSignInAlt } from 'react-icons/fa'
 
 import { setAuthedUser } from '../actions/authedUser'
 
@@ -12,7 +13,7 @@ class Nav extends Component {
     const { authedUser, user } = this.props
     return (
       <nav className='nav'>
-        <ul>
+        <ul className='nav-links'>
           <li>
             <NavLink to='/' exact activeClassName='active'>
               Home
@@ -31,10 +32,12 @@ class Nav extends Component {
         </ul>
 
         {authedUser !== null && (
-          <ul>
-            <p>Hello, { user.name }</p>
-            <img alt='user avatar' src={ user.avatarURL } className='navbar-profile-img' />
-            <button onClick={this.handleLogout}>Logout</button>
+          <ul className='nav-logged-in'>
+            <div className='nav-logged-in-greeting'>
+              <p className='nav-logged-in-greeting-text'>Hello, { user.name }</p>
+              <img alt='user avatar' src={ user.avatarURL } className='nav-logged-in-greeting-avatar' />
+            </div>
+            <button className='nav-logged-in-logout-btn' onClick={this.handleLogout}><FaSignInAlt /></button>
           </ul>
         )}
       </nav>

@@ -1,11 +1,163 @@
+
+/* -- Fonts -- */
+@import url('https://fonts.googleapis.com/css?family=Miriam+Libre');
+
+
+/* -- Shared Styling -- */
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Miriam Libre', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.navbar-profile-img {
-  height: 50px;
-  width: auto;
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+/* -- Navbar Styling -- */
+.nav {
+  border-bottom: 1px solid #dee0df;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.nav .nav-links {
+  padding-left: 15px;
+}
+
+.nav ul.nav-links li {
+  margin-right: 25px;
+  padding: 16px 0;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.nav ul.nav-links li:hover {
+  border-bottom: 3px solid #f4645f;
+}
+
+.nav a{
+  text-decoration: none;
+  color: #525252;
+  transition: 0.3s;
+  
+}
+.nav a:hover{
+  color: #f4645f;
+}
+
+.nav ul.nav-logged-in {
+  padding-right: 10px;
+}
+
+
+.nav-logged-in-greeting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.nav-logged-in-greeting-text {
+  margin-right: 10px;
+}
+
+.nav-logged-in-greeting-avatar {
+  height: 30px;
   border-radius: 50%;
+}
+
+.nav-logged-in-logout-btn {
+  padding-top: 5px;
+  border: none;
+  font-size: 20px;
+  color:#525252;
+  transition: 0.3s;
+}
+.nav-logged-in-logout-btn:hover {
+  color:#f4645f;
+}
+
+/* -- End of: Navbar Styling -- */
+
+/* -- Login Styling -- */
+.box {
+  border: 1px solid #dee0df;
+  padding-top: 10px;
+  border-radius: 4px;
+  width: 50%;
+  box-shadow: 0 1px 15px rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.box-title {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.box-subtitle {
+  margin-top: 0;
+  text-align: center;
+  color: grey;
+  font-style: italic;
+}
+
+.box-avatar {
+  height: 200px;
+  border-radius: 50%;
+}
+
+.login-form-container {
+  margin-top: 20px;
+  background: #fafafa;
+  width: 100%;
+}
+
+.login-form-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-loading p {
+  font-size: 12px;
+  color: grey;
+}
+
+.login-form-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+}
+
+.login-form-form select option{
+  text-align: center;
+}
+
+.login-form-form-submit-btn {
+  margin-top: 10px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-family: 'Miriam Libre', sans-serif;
+  font-size: 15px;
 }

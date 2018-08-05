@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
-
 import { handleInitialData } from '../actions/shared'
 import Nav from '../components/Nav'
 import Login from '../components/Login'
@@ -27,17 +26,18 @@ class App extends Component {
         <Fragment>
           <div className='container'>
             <Nav />
-            {authedUser === null
-              ? <Login />
-              : (
-                <Fragment>
-                  <Route path='/' exact component={Dashboard} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/leaderboard' component={Leaderboard} />
-                  <Route path='/questions/:id' component={QuestionPage} />
-                </Fragment>
-              )}
-            
+            <div className='content'>
+              {authedUser === null
+                ? <Login />
+                : (
+                  <Fragment>
+                    <Route path='/' exact component={Dashboard} />
+                    <Route path='/add' component={NewQuestion} />
+                    <Route path='/leaderboard' component={Leaderboard} />
+                    <Route path='/questions/:id' component={QuestionPage} />
+                  </Fragment>
+                )}
+            </div>
           </div>
         </Fragment>
       </Router>

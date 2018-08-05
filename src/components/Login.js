@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ReactLoading from 'react-loading'
+import Select from 'react-select'
 
 import { setAuthedUser } from '../actions/authedUser'
+import defaultAvatar from '../assets/login_avatar.svg'
+
 
 export class Login extends Component {
   state = {
     slectedUser: 'none'
   }
 
-  handleChange = (e) => {
-    const slectedUser = e.target.value
+  handleChange = (slectedUser) => {
     this.setState(() => ({
-      slectedUser,
+      slectedUser: slectedUser.value,
     }))
   }
 
@@ -26,29 +28,42 @@ export class Login extends Component {
   }
   render() {
     const { users, userIds } = this.props
+    const { slectedUser } = this.state
+
+    const options = []
+
+    userIds.forEach(user=>{
+      options.push({ value: users[user].id, label: users[user].name})
+    })
 
     return (
-      <div>
-        Login Component
-        <br />
+      <div className='box'>
+        <h3 className='box-title'>Welcom to the Would You Rather App!</h3>
+        <p className='box-subtitle'>Please sign in to continue</p>
+        {slectedUser === 'none'
+          ? <img className='box-avatar' src={defaultAvatar} alt='avatar' />
+          : <img className='box-avatar' src={users[slectedUser].avatarURL} alt='avatar' />
+        }
+        <div className='login-form-container'>
         {userIds.length === 0 
-          ? <ReactLoading type='bars' color="#999" />
+          ? (
+            <div className='login-form-loading'>
+              <ReactLoading type='bars' color="#999" />
+              <p>Loading users ...</p>
+            </div>
+          )
           : (
-            <form onSubmit={this.handleSubmit}>
-            <select onChange={this.handleChange}>
-              <option value='none'>-- Select --</option>
-              {userIds.map(id => (
-                <option 
-                  value={id} 
-                  key={id} 
-                >
-                {users[id].name}
-                </option>
-              ))}
-            </select>
-            <button disabled={this.state.slectedUser === 'none'}>Sign In</button>
+            <form className='login-form-form' onSubmit={this.handleSubmit}>
+            <Select options={options} onChange={this.handleChange} />
+            <button
+              className='login-form-form-submit-btn'
+              disabled={this.state.slectedUser === 'none'}
+            >
+            Sign In
+            </button>
             </form>
           )}
+          </div>
         
       </div>
     )

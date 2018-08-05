@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const LeaderboardItem = (props) => {
   return (
@@ -29,6 +30,12 @@ const LeaderboardItem = (props) => {
       </div>
     </div>
   )
+}
+
+LeaderboardItem.propTypes = {
+  score: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 export default LeaderboardItem

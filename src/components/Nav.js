@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { FaSignInAlt } from 'react-icons/fa'
@@ -43,6 +44,11 @@ class Nav extends Component {
       </nav>
     )
   }
+}
+
+Nav.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  user: PropTypes.object,
 }
 
 const mapStateToProps = ({ authedUser, users }) => {

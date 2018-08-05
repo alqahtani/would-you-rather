@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -65,6 +66,10 @@ export class NewQuestion extends Component {
       </div>
     )
   }
+}
+
+NewQuestion.propTypes = {
+  authedUser: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = ({ authedUser }) => ({ authedUser })

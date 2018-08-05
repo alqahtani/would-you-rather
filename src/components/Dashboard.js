@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Question from './Question';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -38,6 +39,16 @@ export class Dashboard extends Component {
     )
   }
 }
+
+Dashboard.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  answered: PropTypes.array.isRequired,
+  notAnswered: PropTypes.array.isRequired,
+  authedUser: PropTypes.string.isRequired,
+  questions: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
+}
+
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
   const questionsIds = Object.keys(questions)

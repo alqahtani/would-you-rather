@@ -1,5 +1,6 @@
 import React from 'react'
-import { Line } from 'rc-progress';
+import PropTypes from 'prop-types'
+import { Line } from 'rc-progress'
 
 const AnsweredQuestion = ({ data }) => {
   
@@ -41,6 +42,10 @@ const AnsweredQuestion = ({ data }) => {
       </div>
     </div>  
   )
+}
+
+AnsweredQuestion.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 export default AnsweredQuestion  

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class UnansweredQuestion extends Component {
   state = {
@@ -23,6 +24,7 @@ class UnansweredQuestion extends Component {
   }
   render() {
     const { users, question } = this.props.data
+    const { selectedAnswer } = this.state
 
     return (
       <div>
@@ -39,7 +41,7 @@ class UnansweredQuestion extends Component {
                   <input 
                     type='radio'
                     value='optionOne'
-                    defaultChecked={this.state.selectedAnswer ==='optionOne'}
+                    defaultChecked={selectedAnswer ==='optionOne'}
                     name='option'
                   /> {question.optionOne.text}
                 </div>
@@ -47,12 +49,12 @@ class UnansweredQuestion extends Component {
                 <input 
                     type='radio'
                     value='optionTwo'
-                    defaultChecked={this.state.selectedAnswer ==='optionTwo'}
+                    defaultChecked={selectedAnswer ==='optionTwo'}
                     name='option'
                   /> {question.optionTwo.text}
                 </div>
                 <div>
-                  <button className='question-box-submit-btn' disabled={this.state.selectedAnswer === null}>Submit</button>
+                  <button className='question-box-submit-btn' disabled={selectedAnswer === null}>Submit</button>
                 </div>
               </form>
             </div>
@@ -61,6 +63,10 @@ class UnansweredQuestion extends Component {
       </div>  
     )
   }
+}
+
+UnansweredQuestion.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 export default UnansweredQuestion

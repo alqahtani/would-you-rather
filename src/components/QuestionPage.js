@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import AnsweredQuestion from '../components/AnsweredQuestion'
@@ -30,6 +31,14 @@ export class QuestionPage extends Component {
       </div>
     )
   }
+}
+
+QuestionPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isAnswered: PropTypes.bool.isRequired,
+  authedUser: PropTypes.string.isRequired,
+  question: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = ({ questions, users, authedUser }, props) => {

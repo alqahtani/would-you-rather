@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import LeaderboardItem from '../components/LeaderboardItem'
@@ -22,6 +23,11 @@ export class Leaderboard extends Component {
       </div>
     )
   }
+}
+
+Leaderboard.propTypes = {
+  scores: PropTypes.array.isRequired,
+  users: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = ({ users }) => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 export class Question extends Component {
@@ -46,6 +47,12 @@ export class Question extends Component {
       </div>
     )
   }
+}
+
+Question.propTypes = {
+  user: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired,
+  answer: PropTypes.string.isRequired,
 }
 
 export default Question
